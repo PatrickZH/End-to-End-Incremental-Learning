@@ -22,7 +22,7 @@ images_train, labels_train, images_val, labels_val, images_test, labels_test = u
 # parameters
 iteration = 400
 iteration_finetune = 300
-lr = 1
+lr = 0.5
 schedules = range(50, iteration, 50)
 gamma = 0.5
 momentum = 0.9
@@ -368,13 +368,8 @@ for period in range(period_train):
 
 
     # balanced finetune
-    # balanced finetune
-    # balanced finetune
-    # balanced finetune
-
 
     net_old = copy.deepcopy(net)
-
 
     # finetune
     if period>0:
@@ -548,7 +543,7 @@ for period in range(period_train):
 
 
 
-    # memory management
+    # memory management [random select]
     # reduce old memory
     memory_size = memory_K // (num_class_novel + num_class_old)
     if period >0:
